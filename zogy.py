@@ -1332,14 +1332,13 @@ def get_trans (data_new, data_ref, data_Scorr, data_Fpsf, data_Fpsferr,
         coords = region_temp.coords
         y_index = coords[:,0]
         x_index = coords[:,1]
-        index_region = [y_index, x_index]
 
-        data_new_region = data_new[index_region]
-        data_ref_region = data_ref[index_region]
+        data_new_region = data_new[y_index, x_index]
+        data_ref_region = data_ref[y_index, x_index]
         #data_D_region = data_D[index_region]
-        data_Scorr_region = data_Scorr[index_region]
-        data_Fpsf_region = data_Fpsf[index_region]
-        data_Fpsferr_region = data_Fpsferr[index_region]
+        data_Scorr_region = data_Scorr[y_index, x_index]
+        data_Fpsf_region = data_Fpsf[y_index, x_index]
+        data_Fpsferr_region = data_Fpsferr[y_index, x_index]
 
         # rectangular bounding box of the current region; N.B.: this
         # includes pixels that are not significant and is mostly for
@@ -1355,7 +1354,7 @@ def get_trans (data_new, data_ref, data_Scorr, data_Fpsf, data_Fpsferr,
         # the input new and ref mask arrays; for the moment, discard
         # the region if sum of flags in either new or ref mask is
         # nonzero
-        if np.sum(data_new_mask[index_region]) > 0 or np.sum(data_ref_mask[index_region]) > 0:
+        if np.sum(data_new_mask[y_index, x_index]) > 0 or np.sum(data_ref_mask[y_index, x_index]) > 0:
             continue
 
         # discard if region area is too small or too big
