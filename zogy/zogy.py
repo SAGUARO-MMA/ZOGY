@@ -53,7 +53,7 @@ from astropy.coordinates import SkyCoord, EarthLocation, AltAz
 from numpy.lib.recfunctions import append_fields, drop_fields, rename_fields, stack_arrays
 #from memory_profiler import profile
 
-__version__ = '0.62'
+__version__ = '0.63'
 
 ################################################################################
 
@@ -100,7 +100,7 @@ def optimal_subtraction(new_fits=None, ref_fits=None, new_fits_mask=None,
     settings_module = 'Settings.Constants'
     if telescope is not None:
         settings_module += '_'+telescope
-    C = importlib.import_module(settings_module)
+    C = importlib.import_module('zogy.'+settings_module,'.'+settings_module)
 
     # if verbosity is provided through input parameter [verbose], it
     # will overwrite the corresponding setting in Constants

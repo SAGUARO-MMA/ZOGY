@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools","setuptools_scm[toml]"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zogy"
+version = '0.63'
+requires-python = ">=3.10.9"
+dependencies = [
+    'argparse==1.1',
+    'astropy==5.1',
+    'numpy==1.23.5',
+    'matplotlib==3.7.0',
+    'scipy==1.10.0',
+    'pyfftw==0.13.1',
+    'photutils==1.8.0',
+    'lmfit==1.2.1',
+    'scikit-image==0.19.3',
+    'sip_tpv'
+]
