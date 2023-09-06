@@ -169,6 +169,8 @@ sex_cfg_psffit = cfg_dir+'/sex_psffit.config' # same for PSF-fitting version
 sex_par = cfg_dir+'/sex.params'               # SExtractor output parameters definition file
 sex_par_psffit = cfg_dir+'/sex_psffit.params' # same for PSF-fitting version
 sex_par_ref = cfg_dir+'/sex_ref.params'       # same for reference image output version
+sex_conv = cfg_dir + '/default.conv'          # SExtractor filter file
+sex_nnw = cfg_dir + '/default.nnw'            # SExtractor neural-network weight table file
 psfex_cfg = cfg_dir+'/psfex.config'           # PSFex configuration file
 swarp_cfg = cfg_dir+'/swarp_css.config'           # SWarp configuration file
 

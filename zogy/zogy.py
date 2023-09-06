@@ -5040,7 +5040,7 @@ def run_sextractor(image, cat_out, file_config, file_params, pixscale, log, head
            '-PARAMETERS_NAME', file_params, '-PIXEL_SCALE', str(pixscale),
            '-SEEING_FWHM', str(seeing),'-PHOT_APERTURES',apphot_diams_str,
            '-BACK_SIZE', str(C.bkg_boxsize), '-BACK_FILTERSIZE', str(C.bkg_filtersize),
-           '-NTHREADS', str(nthreads)]
+           '-NTHREADS', str(nthreads), '-FILTER_NAME', C.sex_conv, '-STARNNW_NAME', C.sex_nnw]
 
     # add commands to produce BACKGROUND, BACKGROUND_RMS and
     # background-subtracted image with all pixels where objects were
