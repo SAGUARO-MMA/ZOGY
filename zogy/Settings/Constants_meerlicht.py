@@ -1,4 +1,4 @@
-from importlib import resources
+from importlib_resources import files
 __version__ = '0.62'
 
 #===============================================================================
@@ -154,7 +154,7 @@ zp_default = {'u':24., 'g':24., 'q':24., 'r':24., 'i':24., 'z':24.}
 # Configuration
 #===============================================================================
 # path and names of configuration files
-cfg_dir = str(resources.files('zogy').joinpath('Config'))
+cfg_dir = str(files('zogy').joinpath('Config'))
 sex_cfg = cfg_dir+'/sex.config'               # SExtractor configuration file
 sex_cfg_psffit = cfg_dir+'/sex_psffit.config' # same for PSF-fitting version
 sex_par = cfg_dir+'/sex.params'               # SExtractor output parameters definition file
