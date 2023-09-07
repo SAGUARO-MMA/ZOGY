@@ -1,4 +1,4 @@
-
+from importlib_resources import files
 __version__ = '0.6'
 
 #===============================================================================
@@ -107,7 +107,7 @@ psf_stars_s2n_min = 20   # minimum signal-to-noise ratio for PSF stars
 # Astrometry
 #===============================================================================
 # WCS
-skip_wcs = Talse         # skip Astrometry.net step if image already
+skip_wcs = False         # skip Astrometry.net step if image already
                          # contains a reliable WCS solution
 # Astrometry.net's tweak order
 astronet_tweak_order = 3
@@ -154,14 +154,16 @@ zp_default = {'u':24., 'g':24., 'q':24., 'r':24., 'i':24., 'z':24.}
 # Configuration
 #===============================================================================
 # path and names of configuration files
-cfg_dir = './Config/'
-sex_cfg = cfg_dir+'sex.config'               # SExtractor configuration file
-sex_cfg_psffit = cfg_dir+'sex_psffit.config' # same for PSF-fitting version
-sex_par = cfg_dir+'sex.params'               # SExtractor output parameters definition file
-sex_par_psffit = cfg_dir+'sex_psffit.params' # same for PSF-fitting version
-sex_par_ref = cfg_dir+'sex_ref.params'       # same for reference image output version
-psfex_cfg = cfg_dir+'psfex.config'           # PSFex configuration file
-swarp_cfg = cfg_dir+'swarp.config'           # SWarp configuration file
+cfg_dir = str(files('zogy').joinpath('Config'))
+sex_cfg = cfg_dir+'/sex.config'               # SExtractor configuration file
+sex_cfg_psffit = cfg_dir+'/sex_psffit.config' # same for PSF-fitting version
+sex_par = cfg_dir+'/sex.params'               # SExtractor output parameters definition file
+sex_par_psffit = cfg_dir+'/sex_psffit.params' # same for PSF-fitting version
+sex_par_ref = cfg_dir+'/sex_ref.params'       # same for reference image output version
+sex_conv = cfg_dir + '/default.conv'          # SExtractor filter file
+sex_nnw = cfg_dir + '/default.nnw'            # SExtractor neural-network weight table file
+psfex_cfg = cfg_dir+'/psfex.config'           # PSFex configuration file
+swarp_cfg = cfg_dir+'/swarp.config'           # SWarp configuration file
 
 # if a mask image is provided, the mask values can be associated to
 # the type of masked pixel with this dictionary:
