@@ -300,8 +300,8 @@ def optimal_subtraction(new_fits=None, ref_fits=None, new_fits_mask=None,
             header['S-P'] = (SE_processed, 'successfully processed by SExtractor?')
             # SExtractor version
             cmd = ['sex', '-v']
-            result = subprocess.Popen(cmd, stdout=subprocess.PIPE)
-            version = result.stdout.read().split()[2].decode('UTF-8')
+            result = subprocess.Popen(cmd, stdout=subprocess.PIPE, text=True)
+            version = result.stdout.read().split()[2]
             header['S-VERS'] = (version, 'SExtractor version used')
 
         # determine WCS solution of new_fits
@@ -4363,7 +4363,7 @@ def run_wcs(image_in, image_out, ra, dec, pixscale, width, height, header, log):
     cmd_str = ' '.join(cmd)
     log.info('Astrometry.net command executed:\n{}'.format(cmd_str))
     
-    process=subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    process=subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     (stdoutstr,stderrstr) = process.communicate()
     status = process.returncode
     log.info(stdoutstr)
@@ -4758,7 +4758,7 @@ def run_remap(image_new, image_ref, image_out, image_out_size,
     cmd_str = ' '.join(cmd)
     log.info('SWarp command executed:\n{}'.format(cmd_str))
 
-    process=subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    process=subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     (stdoutstr,stderrstr) = process.communicate()
     status = process.returncode
     log.info(stdoutstr)
@@ -5069,7 +5069,7 @@ def run_sextractor(image, cat_out, file_config, file_params, pixscale, log, head
     log.info('SExtractor command executed:\n{}'.format(cmd_str))
         
     # run command
-    process=subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    process=subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     (stdoutstr,stderrstr) = process.communicate()
     status = process.returncode
     log.info(stdoutstr)
@@ -5204,7 +5204,7 @@ def run_psfex(cat_in, file_config, cat_out, imtype, log):
     cmd_str = ' '.join(cmd)
     log.info('PSFEx command executed:\n{}'.format(cmd_str))
         
-    process=subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    process=subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     (stdoutstr,stderrstr) = process.communicate()
     status = process.returncode
     log.info(stdoutstr)
